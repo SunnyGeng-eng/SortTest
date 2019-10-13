@@ -61,7 +61,6 @@ void QuickSort(int arr[], int left, int right)
 	int index = right;
 	if (left > right)
 		return;
-	cout << "aaa" << endl;
 	//根据二叉树原理 左边小，右边大
 	while (left < right)
 	{
@@ -94,6 +93,28 @@ void QuickSort(int arr[], int left, int right)
 	QuickSort(arr, 0, left - 1);
 	QuickSort(arr, right + 1, index);
 }
+
+void InsertSort(int arr[], int len)
+{
+	//起始为1
+	for (int i = 1; i < len; ++i)
+	{
+		//0号元素对比，比0小，交换
+		if (arr[i] < arr[i - 1])
+		{
+			int temp = arr[i]; //缓存i的数据
+
+			int j = i - 1;
+			for (; j >= 0 && temp < arr[j]; --j)
+			{
+				//向后移动
+				arr[j + 1] = arr[j];
+			}
+			arr[j + 1] = temp;
+		}
+		
+	}
+}
 int main() {
 	int arr[] = { 34,65,12,43,67,5,78,10,3,70 };
 	int len = sizeof(arr) / sizeof(arr[0]);
@@ -102,13 +123,16 @@ int main() {
 
 	cout << "排序后：" << endl;
 	//冒泡
-	/*BubbleSort(arr, len);
-	MyPrint(arr, len);*/
+	//BubbleSort(arr, len);
+	
 	//选择
-	/*SelectSort(arr, len);
-	MyPrint(arr, len);*/
+	//SelectSort(arr, len);
+	
 	//快速
-	QuickSort(arr, 0, len-1);
+	//QuickSort(arr, 0, len-1);
+
+	//插入
+	InsertSort(arr, len);
 	MyPrint(arr, len);
 	
 
